@@ -1,3 +1,4 @@
+import java.lang.Math;
 import java.util.Objects;
 
 public class Vector {
@@ -62,8 +63,7 @@ public class Vector {
 
         else {
 
-            // TODO replace "false" with the actual expression to check if the two vectors are equal
-            if (false) {
+            if (this.x == ((Vector) other).x && this.y == ((Vector) other).y && this.z == ((Vector) other).z) {
                 return true;
             }
             else {
@@ -84,8 +84,7 @@ public class Vector {
      */
     protected int calculateLength() {
 
-        // TODO
-        return 0;
+        return (int) (Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2)));
     }
 
     /**
@@ -96,8 +95,11 @@ public class Vector {
      */
     public Vector add(Vector other) {
 
-        // TODO
-        return Vector.ZERO;
+        return new Vector(
+                this.x + other.x,
+                this.y + other.y,
+                this.z + other.z
+        );
     }
 
     /**
@@ -108,8 +110,11 @@ public class Vector {
      */
     public Vector subtract(Vector other) {
 
-        // TODO
-        return Vector.ZERO;
+        return new Vector(
+                this.x - other.x,
+                this.y - other.y,
+                this.z - other.z
+        );
     }
 
     /**
@@ -120,8 +125,11 @@ public class Vector {
      */
     public Vector multiply(int factor) {
 
-        // TODO
-        return Vector.ZERO;
+        return new Vector(
+                (int) (this.x * ((double) factor / Vector.factor)),
+                (int) (this.y * ((double) factor / Vector.factor)),
+                (int) (this.z * ((double) factor / Vector.factor))
+        );
     }
 
     /**
@@ -135,8 +143,11 @@ public class Vector {
 
         if (divisor == 0) throw new ArithmeticException("divide by zero");
 
-        // TODO
-        return Vector.ZERO;
+        return new Vector(
+                (int) (this.x / ((double) divisor / Vector.factor)),
+                (int) (this.y / ((double) divisor / Vector.factor)),
+                (int) (this.z / ((double) divisor / Vector.factor))
+        );
     }
 
     /**
@@ -146,8 +157,7 @@ public class Vector {
      */
     public Vector flatten() {
 
-        // TODO
-        return Vector.ZERO;
+        return new Vector(this.x, this.y, 0);
     }
 
     /**
@@ -157,7 +167,6 @@ public class Vector {
      */
     public Vector normalize() {
 
-        // TODO
-        return Vector.ZERO;
+        return this.divide(this.length);
     }
 }
