@@ -45,7 +45,7 @@ public class VectorTest {
     public void testLength3() {
 
         Vector v = new Vector(35_000, 120_000, 10_000);
-        assertEquals(125_000, VectorTest.round(v.length));
+        assertEquals(125_000, VectorTest.round(v.calculateLength()));
     }
 
     @Test
