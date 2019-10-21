@@ -155,4 +155,25 @@ public class VectorTest {
         int roundedLength = VectorTest.round(v.length);
         assertEquals(1000, roundedLength);
     }
+
+    @Test
+    public void testAngle1() {
+
+        Vector v = new Vector(1_000, 0_000, 0_000);
+        assertEquals(0.0, v.angle, 1);
+    }
+
+    @Test
+    public void testAngle2() {
+
+        Vector v = new Vector(0_000, 1_000, 0_000);
+        assertEquals(Math.PI/2*Vector.factor, v.angle, 1);
+    }
+
+    @Test
+    public void testAngle3() {
+
+        Vector v = new Vector(-1_000, 1_000, 0_000);
+        assertEquals(-Math.PI/4*Vector.factor, v.angle, 1);
+    }
 }
