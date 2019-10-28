@@ -173,7 +173,7 @@ public class VectorTest {
     @Test
     public void testAngle3() {
 
-        Vector v = new Vector(1_000, -1_000, 0_000);
+        Vector v = new Vector(-1_000, 1_000, 0_000);
         assertEquals(-Math.PI/4*Vector.factor, v.angle, 1);
     }
 }
