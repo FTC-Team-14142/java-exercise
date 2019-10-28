@@ -178,6 +178,6 @@ public class Vector {
 
     protected int calculateAngle() {
 
-        return 0;
+        return (int) (Math.atan2(this.y, this.x) * Vector.factor);
     }
 }
