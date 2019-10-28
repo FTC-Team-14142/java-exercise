@@ -35,6 +35,11 @@ public class Vector {
     public final int length;
 
     /**
+     * The angle of the vector, between -pi and pi.
+     */
+    public final int angle;
+
+    /**
      * Create a new vector.
      *
      * @param x
@@ -48,6 +53,7 @@ public class Vector {
         this.z = z;
 
         this.length = this.calculateLength();
+        this.angle = this.calculateAngle();
     }
 
     public int hashCode() {
@@ -168,5 +174,10 @@ public class Vector {
     public Vector normalize() {
 
         return this.divide(this.length);
+    }
+
+    protected int calculateAngle() {
+
+        return 0;
     }
 }
