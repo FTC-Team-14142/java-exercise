@@ -11,10 +11,6 @@ public class Odometry {
      */
     protected Vector orientation = new Vector(1, 0, 0).normalize();
 
-    public static void main(String[] args) {
-
-    }
-
     /**
      * Drive in the direction of the orientation.
      *
@@ -22,7 +18,8 @@ public class Odometry {
      */
     public void drive(int distance) {
 
-
+        // create delta vector and add it to current position
+        this.position = this.position.add(this.orientation.multiply(distance));
     }
 
     /**
@@ -35,6 +32,17 @@ public class Odometry {
      */
     public void turn(int degreesDelta) {
 
+        // convert degrees to radians
+        double radiansDelta = degreesDelta / 180 * Math.PI;
+        // add angles
+        double radiansNew = (this.orientation.angle + radiansDelta) / Vector.factor;
+
+        // calculate new x and y coordinates
+        int newX = (int) (Vector.factor * Math.cos(radiansNew));
+        int newY = (int) (Vector.factor * Math.sin(radiansNew));
+
+        // create new normalized orientation vector from coordinates
+        this.orientation = new Vector(newX, newY, 0).normalize();
     }
 
     public Vector getPosition() {
