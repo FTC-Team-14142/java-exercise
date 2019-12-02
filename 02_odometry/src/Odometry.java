@@ -45,6 +45,31 @@ public class Odometry {
         this.orientation = new Vector(newX, newY, 0).normalize();
     }
 
+    /**
+     * Turn the robot so that it faces the given position.
+     *
+     * @param pos the position to turn to
+     */
+    public void turnToPosition(Vector pos) {
+
+        Vector delta = pos.subtract(this.position);
+        int radiansDelta = delta.angle - this.orientation.angle;
+        int degreesDelta = (int) (radiansDelta * 180 / Math.PI);
+        this.turn(degreesDelta);
+    }
+
+    /**
+     * Drive to the given position in a direct line.
+     *
+     * @param pos the position to drive to
+     */
+    public void driveToPosition(Vector pos) {
+
+        this.turnToPosition(pos);
+        int distance = pos.subtract(this.position).length;
+        this.drive(distance);
+    }
+
     public Vector getPosition() {
 
         return position;
